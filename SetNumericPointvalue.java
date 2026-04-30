@@ -23,7 +23,7 @@ public void onExecute() throws Exception {
 
             if (child instanceof BNumericWritable) {
                 BNumericWritable nw = (BNumericWritable) child;
-                nw.setIn1(new BStatusNumeric(targetValue));
+                nw.setIn10(new BStatusNumeric(targetValue));
                 System.out.println("Point set successfully: " + child.getName() + " → " + targetValue);
                 targetValue += 1.0; // ← Change to your desired step value, e.g. 5.0
             }
@@ -57,7 +57,8 @@ public void onReset() throws Exception {
 
             if (child instanceof BNumericWritable) {
                 BNumericWritable nw = (BNumericWritable) child;
-                nw.setIn1(new BStatusNumeric(0, BStatus.nullStatus));
+                nw.setIn10(new BStatusNumeric(0, BStatus.nullStatus));
+                nw.setFallback(new BStatusNumeric(0));
                 System.out.println("Point value reset");
 
             }
